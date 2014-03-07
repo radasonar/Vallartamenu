@@ -2,26 +2,26 @@
 	<h1 class="seccionTitulo">Detalles</h1>
 	<hr>
 	<div class="seccionPrincipal">
-		<div class="pull-left agregar-imagen"></div>
+		<div class="pull-left agregar-imagen"><figure class="img-thumbnail"></figure><br><a href="#">Subir imagen</a></div>
 		<div class="pull-right visita-menu">Visitas a tu menu <strong>1000</strong></div>
 	</div>
 	<div class="form-horizontal">
 	  <div class="form-group">
 	    <label for="nombreLugar" class="col-sm-2 control-label">Nombre del Lugar</label>
 	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="nombreLugar" placeholder="Lugar">
+	      <input type="text" class="form-control" id="nombreLugar" placeholder="Nombre del Lugar">
 	    </div>
 	  </div>
 	  <div class="form-group">
-	    <label for="nombreLugar" class="col-sm-2 control-label">Propietario</label>
+	    <label for="propietario" class="col-sm-2 control-label">Propietario</label>
 	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="nombreLugar" placeholder="Lugar">
+	      <input type="text" class="form-control" id="propietario" placeholder="Nombre del Propietario">
 	    </div>
 	  </div>
 	  <div class="form-group">
-	    <label for="nombreLugar" class="col-sm-2 control-label">Domicilio</label>
+	    <label for="domicilio" class="col-sm-2 control-label">Domicilio</label>
 	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="nombreLugar" placeholder="Lugar">
+	      <input type="text" class="form-control" id="domicilio" placeholder="Domicilio">
 	    </div>
 	  </div>
 	  <div class="form-group">
@@ -38,8 +38,13 @@
 	  </div>
 	  <div class="form-group">
 	    <label for="nombreLugar" class="col-sm-2 control-label">Horario</label>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="nombreLugar" placeholder="Lugar">
+	    <div class="row">
+	    	<div class="col-sm-1">
+	    		<input type="text" class="form-control">am
+	    	</div>
+	    	<div class="col-sm-1">
+	    		<input type="text" class="form-control">pm
+	    	</div>
 	    </div>
 	  </div>
 	  <div class="form-group">
@@ -84,6 +89,12 @@
 			  <input type="checkbox" id="inlineCheckbox3" value="option3"> Para llevar
 			</label>
 		</div>
+	  </div>
+	  <div class="form-group">
+	    <label for="nombreLugar" class="col-sm-2 control-label">Descripción</label>
+	    <div class="col-sm-4">
+	      <textarea name="descripcion" id="descripcion" class="form-control" cols="30" rows="7"></textarea>
+	    </div>
 	  </div>
 	</div><!-- Form -->
 </div><!-- Seccion -->

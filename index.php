@@ -16,7 +16,7 @@
 					<div class="row panel">
 						<h1 class="tituloPanel">Panel</h1>
 						<div class="row">
-							<figure class="logo"></figure>
+							<figure class="avatar"></figure>
 						</div>
 						<div class="row item-menu active" onclick="detalles()">Detalles</div>
 						<div class="row item-menu">Entrada</div>
