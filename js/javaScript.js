@@ -4,7 +4,7 @@ function detalles(){
 	e.onreadystatechange = function(){
 		if(e.readyState){
 			$(function(){
-				$('#contenido').html(e.responseText);
+				$('#contenido').html($(e.responseText).fadeIn());
 			});
 		}
 	}
