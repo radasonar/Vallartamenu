@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.6deb1
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-03-2014 a las 19:24:38
--- Versión del servidor: 5.5.35-0ubuntu0.13.10.2
--- Versión de PHP: 5.5.3-1ubuntu2.1
+-- Tiempo de generación: 13-03-2014 a las 17:07:33
+-- Versión del servidor: 5.6.12-log
+-- Versión de PHP: 5.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_vallartamenu`
 --
+CREATE DATABASE IF NOT EXISTS `bd_vallartamenu` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `bd_vallartamenu`;
 
 -- --------------------------------------------------------
 
@@ -61,6 +63,7 @@ CREATE TABLE IF NOT EXISTS `tb_entradas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_admin` int(11) NOT NULL,
   `titulo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
   `precio` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
@@ -130,6 +133,7 @@ CREATE TABLE IF NOT EXISTS `tb_platillos_fuertes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_admin` int(11) NOT NULL,
   `titulo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
   `precio` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
@@ -144,6 +148,7 @@ CREATE TABLE IF NOT EXISTS `tb_postres` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_admin` int(11) NOT NULL,
   `titulo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
   `precio` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;

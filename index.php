@@ -18,11 +18,11 @@
 						<div class="row">
 							<figure class="avatar"></figure>
 						</div>
-						<div class="row item-menu active" onclick="detalles()">Detalles</div>
-						<div class="row item-menu">Entrada</div>
-						<div class="row item-menu">Plato Fuerte</div>
-						<div class="row item-menu">Postre</div>
-						<div class="row item-menu">Bebidas</div>
+						<div class="row item-menu" onclick="panel(0)">Detalles</div>
+						<div class="row item-menu" onclick="panel(1)">Entrada</div>
+						<div class="row item-menu" onclick="panel(2)">Plato Fuerte</div>
+						<div class="row item-menu" onclick="panel(3)">Bebidas</div>
+						<div class="row item-menu" onclick="panel(4)">Postre</div>
 					</div>
 				</section>
 			</div>
