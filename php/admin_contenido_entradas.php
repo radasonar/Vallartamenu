@@ -2,7 +2,7 @@
 	<h1 class="seccionTitulo">Entradas</h1>
 	<hr>
 	<div class="seccionPrincipal">
-		<figure class="agregar"></figure>
+		<figure class="agregar" onclick="abrirAgregarPlatillo(1)"></figure>
 	</div>
 	<div class="table-responsive tabla">
 		<table class="table table-hover table-striped">

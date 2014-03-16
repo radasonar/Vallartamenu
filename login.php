@@ -4,16 +4,35 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<title>Login - Vallarta.menu</title>
-	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 	<div class="cajita">
-		<form action="php/lg_conectar.php" method="post">
-			<div class="form-group"><label>Usuario: </label><input type="text" name="user" placeholder="Usuario ó Correo electronico..."></div>
-			<div class="form-group"><label>Contraseña: </label><input type="password" name="pass" placeholder="Contraseña"></div>
-			<div class="form-group"><a href="#" class="olvido">¿Olvidaste tu contraseña?</a><input type="submit" value="Enviar"></div>
+		<h3 class="tituloLogin">Iniciar Sesion</h3>
+		<hr>
+		<form method="post" class="form-horizontal">
+			<div class="form-group" id="divUser">
+				<label class="col-sm-3">Usuario: </label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" name="user">
+				</div>
+			</div>
+			<div class="form-group" id="divPass">
+				<label class="col-sm-3">Contraseña: </label>
+				<div class="col-sm-9">
+					<input class="form-control" type="password" name="pass">
+				</div>
+			</div>
+			<div class="form-group">
+				<a class="col-sm-6" href="#">¿Olvidaste tu contraseña?</a>
+				<div class="col-sm-6">
+					<input class="btn btn-primary pull-right" type="submit" value="Enviar">
+				</div>
+			</div>
 		</form>
 	</div>
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/javaScript.js"></script>
 </body>
 </html>
