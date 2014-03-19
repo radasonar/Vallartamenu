@@ -1,3 +1,7 @@
+<?php
+session_start();
+if($_SESSION['usuario'] != ""){
+?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -15,15 +19,13 @@
 			<div class="col-xs-3 ">
 				<section>
 					<div class="row panel">
-						<h1 class="tituloPanel">Panel</h1>
-						<div class="row">
-							<figure class="avatar"></figure>
-						</div>
-						<div class="row item-menu" onclick="panel(0)">Detalles</div>
-						<div class="row item-menu" onclick="panel(1)">Entrada</div>
-						<div class="row item-menu" onclick="panel(2)">Plato Fuerte</div>
-						<div class="row item-menu" onclick="panel(3)">Postre</div>
-						<div class="row item-menu" onclick="panel(4)">Bebidas</div>
+						<?php 
+							switch($_SESSION['tipo_admin']){
+								case 2:{ require_once("php/admin/menu_admin.php"); break; }
+								case 3:{ break; }
+								case 4:{ break; }
+							}
+						?>
 					</div>
 				</section>
 			</div>
@@ -40,3 +42,8 @@
 	<script src="js/javaScript.js"></script>
 </body>
 </html>
+<?php
+}else{
+	header("Location: login.php");
+}
+?>
