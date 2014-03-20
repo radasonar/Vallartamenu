@@ -1,6 +1,15 @@
 <?php
 session_start();
 if($_SESSION['usuario'] != ""){
+
+define("HOST","127.0.0.1");
+define("USER","root");
+define("PASS","");
+define("DB","bd_vallartamenu");
+
+@mysql_connect(HOST,USER,PASS);
+@mysql_select_db(DB);
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -10,7 +19,6 @@ if($_SESSION['usuario'] != ""){
 	<title>Backend Vallarta.Me</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/estilo.css">
-	<script src="js/jquery-2.1.0.min.js"></script>
 </head>
 <body>
 	<div class="ventana"><div class="contenidoVentana"></div></div>
@@ -23,7 +31,7 @@ if($_SESSION['usuario'] != ""){
 							switch($_SESSION['tipo_admin']){
 								case 2:{ require_once("php/admin/menu_admin.php"); break; }
 								case 3:{ break; }
-								case 4:{ break; }
+								case 4:{ require_once("php/super/menu_sp_admin.php"); break; }
 							}
 						?>
 					</div>
@@ -39,6 +47,7 @@ if($_SESSION['usuario'] != ""){
 	<div class="ventana">
 		<div class="contenidoVentana"></div>
 	</div>
+	<script src="js/jquery-2.1.0.min.js"></script>
 	<script src="js/javaScript.js"></script>
 </body>
 </html>

@@ -1,6 +1,3 @@
-$(window).on('load', function() {		
-	panel(0);
-});
 function panelAdmin(e) {
 	switch(e){
 		case 0:{ $('#contenido').load('php/admin/admin_contenido_detalles.php'); break;}
@@ -13,7 +10,7 @@ function panelAdmin(e) {
 }
 function panelSuperAdmin(e) {
 	switch(e){
-		case 0:{ $('#contenido').load('php/super/sp_admin_dar_altas.php'); break; }
+		case 0:{ $('#contenido').load('php/super/sp_admin_contenido_alta_cliente.php'); break; }
 		case 1:{ break; }
 	}
 	transicion();
@@ -50,26 +47,29 @@ function guardarPlatillo(e){
 }
 function abrirAgregarPlatillo(e){
 	abrirV();
-	$('.contenidoVentana').load('php/frm_agregar_platillo.php',{ id: e});
+	$('.contenidoVentana').load('php/admin/frm_agregar_platillo.php',{ id: e});
 }
 function transicion() {
 	$('#contenido').hide().fadeIn();
 }
 $('form#login').on('submit', function(e) {
 	e.preventDefault();
+	var user = $('input[name=user]').val();
+	var pass = $('input[name=pass]').val();
 	if(user != false){
 		$('#divUser').removeClass('has-error');
-		var user = $('input[name=user]').val();
 		if(pass != false){
-			var pass = $('input[name=pass]').val();
 			$('#divPass').removeClass('has-error');
-			
-			var i = $.post("php/lg_conectar.php", { use: user, pas: pass });
-				if(i.responseText == "4"){
-					$(location).attr('href',"index.php");
-				}else{
-					alert("Ahi un error con sus datos.");
+
+			$.ajax({
+				url: 'php/lg_conectar.php',
+				type: 'POST',
+				data: {
+					use: user,
+					pas: pass
 				}
+			}).done(function() {
+				$(location).attr('href','index.php')
 			});
 		}else{
 			$('#divPass').addClass('has-error');
@@ -83,4 +83,32 @@ function abrirV() {
 }
 function cerrarV() {
 	$('.ventana').fadeOut();
+}
+function altaCliente(){
+	var usuario = $('.altaCliente input[name=usuario]').val();
+	var pass1 = $('.altaCliente input[name=pass]').val();
+
+	if(usuario != false){
+		$('.mensajes').html('');
+		if(pass1 != false){
+			$('.mensajes').html('');
+			var respuesta = $.ajax({
+				type: 'POST',
+				url: 'php/super/sql_alta_cliente.php',
+				data: {user: usuario,pass: pass1},
+				dataType: 'html'
+				});
+			respuesta.done(function() {
+				$('.mensajes').html('El usuario se creo correctamente!');
+				$('.altaCliente input[name=usuario]').val('');
+				$('.altaCliente input[name=pass]').val('');
+			});
+		}else{
+			$('.mensajes').html('Ingresa una contraseña.');
+			$('.altaCliente input[name=pass1]').focus();
+		}
+	}else{
+		$('.mensajes').html('Ingresa el nombre del usuario.');
+		$('.altaCliente input[name=usuario]').focus();
+	}
 }

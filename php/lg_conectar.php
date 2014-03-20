@@ -4,6 +4,9 @@ define("USER","root");
 define("PASS","");
 define("DB","bd_vallartamenu");
 
+mysql_connect(HOST,USER,PASS);
+mysql_select_db(DB);
+
 $correo = $_POST['use'];
 $pass = $_POST['pas'];
 
@@ -15,9 +18,6 @@ $hoy = date("j-M-Y")." ".$hoy;
 */
 
 $hoy = date("j-M-Y");
-
-mysql_connect(HOST,USER,PASS);
-mysql_select_db(DB);
 
 $sql = mysql_query("SELECT * FROM tb_info_admin WHERE correo = '$correo'");
 
