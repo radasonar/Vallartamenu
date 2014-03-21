@@ -1,20 +1,60 @@
-function panelAdmin(e) {
+/*********************************************************
+
+					! - Eventos - ¡
+
+*********************************************************/
+$('form#login').on('submit', function(e) {
+	e.preventDefault();
+	var user = $('input[name=user]').val();
+	var pass = $('input[name=pass]').val();
+	if(user != false){
+		$('#divUser').removeClass('has-error');
+		if(pass != false){
+			$('#divPass').removeClass('has-error');
+
+			$.ajax({
+				url: 'php/iniciar_sesion.php',
+				type: 'POST',
+				data: {
+					use: user,
+					pas: pass
+				}
+			}).done(function() {
+				$(location).attr('href','index.php')
+			});
+		}else{
+			$('#divPass').addClass('has-error');
+		}
+	}else{
+		$('#divUser').addClass('has-error');
+	}
+});
+$('.cerrarSesion').on('click', function() {
+	$(location).attr('href','php/cerrar_sesion.php');
+});
+/*********************************************************
+
+					! - Funciones - ¡
+
+*********************************************************/
+function panelCliente(e) {
 	switch(e){
-		case 0:{ $('#contenido').load('php/admin/admin_contenido_detalles.php'); break;}
-		case 1:{ $('#contenido').load('php/admin/admin_contenido_entradas.php'); break;}
-		case 2:{ $('#contenido').load('php/admin/admin_contenido_platillos_fuertes.php'); break;}
-		case 3:{ $('#contenido').load('php/admin/admin_contenido_postres.php'); break;}
-		case 4:{ $('#contenido').load('php/admin/admin_contenido_bebidas.php'); break;}
+		case 0:{ $('#contenido').load('php/cliente/cliente_contenido_detalles.php'); break;}
+		case 1:{ $('#contenido').load('php/cliente/cliente_contenido_entradas.php'); break;}
+		case 2:{ $('#contenido').load('php/cliente/cliente_contenido_platillos_fuertes.php'); break;}
+		case 3:{ $('#contenido').load('php/cliente/cliente_contenido_postres.php'); break;}
+		case 4:{ $('#contenido').load('php/cliente/cliente_contenido_bebidas.php'); break;}
 	}
 	transicion();
 }
-function panelSuperAdmin(e) {
+function panelAdmin(e) {
 	switch(e){
-		case 0:{ $('#contenido').load('php/super/sp_admin_contenido_alta_cliente.php'); break; }
+		case 0:{ $('#contenido').load('php/admin/admin_contenido_alta_cliente.php'); break; }
 		case 1:{ break; }
 	}
 	transicion();
 }
+/*
 function guardarPlatillo(e){
 	var titulo = $('#titulo').val();
 	var precio = $('#precio').val();
@@ -45,45 +85,7 @@ function guardarPlatillo(e){
 		$('#divTitulo').addClass('has-error').focus();
 	}
 }
-function abrirAgregarPlatillo(e){
-	abrirV();
-	$('.contenidoVentana').load('php/admin/frm_agregar_platillo.php',{ id: e});
-}
-function transicion() {
-	$('#contenido').hide().fadeIn();
-}
-$('form#login').on('submit', function(e) {
-	e.preventDefault();
-	var user = $('input[name=user]').val();
-	var pass = $('input[name=pass]').val();
-	if(user != false){
-		$('#divUser').removeClass('has-error');
-		if(pass != false){
-			$('#divPass').removeClass('has-error');
-
-			$.ajax({
-				url: 'php/lg_conectar.php',
-				type: 'POST',
-				data: {
-					use: user,
-					pas: pass
-				}
-			}).done(function() {
-				$(location).attr('href','index.php')
-			});
-		}else{
-			$('#divPass').addClass('has-error');
-		}
-	}else{
-		$('#divUser').addClass('has-error');
-	}
-});
-function abrirV() {
-	$('.ventana').fadeIn();
-}
-function cerrarV() {
-	$('.ventana').fadeOut();
-}
+*/
 function altaCliente(){
 	var usuario = $('.altaCliente input[name=usuario]').val();
 	var pass1 = $('.altaCliente input[name=pass]').val();
@@ -94,7 +96,7 @@ function altaCliente(){
 			$('.mensajes').html('');
 			var respuesta = $.ajax({
 				type: 'POST',
-				url: 'php/super/sql_alta_cliente.php',
+				url: 'php/admin/sql_alta_cliente.php',
 				data: {user: usuario,pass: pass1},
 				dataType: 'html'
 				});
@@ -111,4 +113,17 @@ function altaCliente(){
 		$('.mensajes').html('Ingresa el nombre del usuario.');
 		$('.altaCliente input[name=usuario]').focus();
 	}
+}
+function abrirAgregarPlatillo(e){
+	abrirVentana();
+	$('.contenidoVentana').load('php/cliente/frm_agregar_platillo.php',{ id: e});
+}
+function transicion() {
+	$('#contenido').hide().fadeIn();
+}
+function abrirVentana() {
+	$('.ventana').fadeIn();
+}
+function cerrarVentana() {
+	$('.ventana').fadeOut();
 }

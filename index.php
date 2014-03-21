@@ -10,6 +10,7 @@ define("DB","bd_vallartamenu");
 @mysql_connect(HOST,USER,PASS);
 @mysql_select_db(DB);
 
+$tipo = $_SESSION['tipo_admin'];
 ?>
 <!doctype html>
 <html lang="es">
@@ -28,10 +29,10 @@ define("DB","bd_vallartamenu");
 				<section>
 					<div class="row panel">
 						<?php 
-							switch($_SESSION['tipo_admin']){
-								case 2:{ require_once("php/admin/menu_admin.php"); break; }
-								case 3:{ break; }
-								case 4:{ require_once("php/super/menu_sp_admin.php"); break; }
+							switch($tipo){
+								case 2:{ 
+									require_once("php/cliente/cliente_menu.php"); break; }
+								case 4:{ require_once("php/admin/admin_menu.php"); break; }
 							}
 						?>
 					</div>
@@ -49,6 +50,7 @@ define("DB","bd_vallartamenu");
 	</div>
 	<script src="js/jquery-2.1.0.min.js"></script>
 	<script src="js/javaScript.js"></script>
+
 </body>
 </html>
 <?php

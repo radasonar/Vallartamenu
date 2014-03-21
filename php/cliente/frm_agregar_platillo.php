@@ -44,7 +44,7 @@
 		<label class="col-sm-3"></label>
 		<div class="col-sm-12">
 			<input type="submit" class="btn btn-primary pull-right" value="Guardar" onclick="guardarPlatillo(<?php echo $id; ?>)">
-			<input type="button" class="btn btn-default pull-right cancelar" value="Cancelar" onclick="cerrarV()">
+			<input type="button" class="btn btn-default pull-right cancelar" value="Cancelar" onclick="cerrarVentana()">
 		</div>
 	</div>
 </form>
