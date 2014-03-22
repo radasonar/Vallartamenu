@@ -50,42 +50,10 @@ function panelCliente(e) {
 function panelAdmin(e) {
 	switch(e){
 		case 0:{ $('#contenido').load('php/admin/admin_contenido_alta_cliente.php'); break; }
-		case 1:{ break; }
+		case 1:{ $('#contenido').load('php/admin/admin_contenido_estadisticas_clientes.php'); break; }
 	}
 	transicion();
 }
-/*
-function guardarPlatillo(e){
-	var titulo = $('#titulo').val();
-	var precio = $('#precio').val();
-	var descripcion = $('#descripcion').val();
-
-	if(titulo != false){
-		if(precio != false){
-			if(descripcion != false){
-				$.ajax({
-					type: 'POST',
-					url: 'php/insertar_platillo.php',
-					data:{
-					id: e,
-					tit: titulo,
-					pre: precio,
-					des: descripcion
-					}
-				}).done(function() {
-						cerrarV();
-				});
-			}else{
-				$('#divDescripcion').addClass('has-error').focus();
-			}
-		}else{
-			$('#divPrecio').addClass('has-error').focus();
-		}
-	}else{
-		$('#divTitulo').addClass('has-error').focus();
-	}
-}
-*/
 function altaCliente(){
 	var usuario = $('.altaCliente input[name=usuario]').val();
 	var pass1 = $('.altaCliente input[name=pass]').val();
@@ -127,3 +95,35 @@ function abrirVentana() {
 function cerrarVentana() {
 	$('.ventana').fadeOut();
 }
+/*
+function guardarPlatillo(e){
+	var titulo = $('#titulo').val();
+	var precio = $('#precio').val();
+	var descripcion = $('#descripcion').val();
+
+	if(titulo != false){
+		if(precio != false){
+			if(descripcion != false){
+				$.ajax({
+					type: 'POST',
+					url: 'php/insertar_platillo.php',
+					data:{
+					id: e,
+					tit: titulo,
+					pre: precio,
+					des: descripcion
+					}
+				}).done(function() {
+						cerrarV();
+				});
+			}else{
+				$('#divDescripcion').addClass('has-error').focus();
+			}
+		}else{
+			$('#divPrecio').addClass('has-error').focus();
+		}
+	}else{
+		$('#divTitulo').addClass('has-error').focus();
+	}
+}
+*/

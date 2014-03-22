@@ -1,15 +1,7 @@
 <?php
 session_start();
 if($_SESSION['usuario'] != ""){
-
-define("HOST","127.0.0.1");
-define("USER","root");
-define("PASS","");
-define("DB","bd_vallartamenu");
-
-@mysql_connect(HOST,USER,PASS);
-@mysql_select_db(DB);
-
+	
 $tipo = $_SESSION['tipo_admin'];
 ?>
 <!doctype html>
@@ -30,8 +22,7 @@ $tipo = $_SESSION['tipo_admin'];
 					<div class="row panel">
 						<?php 
 							switch($tipo){
-								case 2:{ 
-									require_once("php/cliente/cliente_menu.php"); break; }
+								case 2:{ require_once("php/cliente/cliente_menu.php"); break; }
 								case 4:{ require_once("php/admin/admin_menu.php"); break; }
 							}
 						?>
