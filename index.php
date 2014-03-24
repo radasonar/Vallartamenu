@@ -1,7 +1,6 @@
 <?php
 session_start();
 if($_SESSION['usuario'] != ""){
-	
 $tipo = $_SESSION['tipo_admin'];
 ?>
 <!doctype html>
@@ -41,7 +40,15 @@ $tipo = $_SESSION['tipo_admin'];
 	</div>
 	<script src="js/jquery-2.1.0.min.js"></script>
 	<script src="js/javaScript.js"></script>
-
+	<script>
+		var accion = <?php echo $tipo; ?>;
+		switch(accion){
+			case 2:{ panelCliente(0); break;}
+			case 3:{ break;}
+			case 4:{ panelAdmin(1); break;}
+			default:{ break;}
+		}
+	</script>
 </body>
 </html>
 <?php

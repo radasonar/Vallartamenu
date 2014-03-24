@@ -5,10 +5,10 @@
 		<figure class="agregar" onclick="abrirAgregarPlatillo(4)"></figure>
 	</div>
 	<div class="table-responsive tabla">
-		<table class="table table-hover table-striped">
+		<table class="table table-hover table-striped table-bordered">
 		  <caption class="tituloTabla">Menu</caption>
 		  <thead>
-		    <tr>
+		    <tr class="btn-primary">
 		      <th>Titulo</th>
 		      <th>Descripción</th>
 		      <th>Precio</th>
@@ -16,66 +16,37 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
-		    <tr>
-		      <td>Macarrones</td>
-		      <td>Muy rico y delicioso</td>
-		      <td>$350.00</td>
-		      <td>Editar</td>
-		    </tr>
+		    <?php 
+		    define("HOST","127.0.0.1");
+			define("USER","root");
+			define("PASS","");
+			define("DB","bd_vallartamenu");
+
+			mysql_connect(HOST,USER,PASS);
+			mysql_select_db(DB);
+			session_start();
+			$id_admin = $_SESSION['id_admin'];
+
+			$sql = mysql_query("SELECT * FROM tb_bebidas WHERE tb_info_admin_id = '$id_admin' ORDER BY id DESC");
+			$num = mysql_num_rows($sql);
+			if($num > 0){
+				while($f = mysql_fetch_array($sql)){
+					$id = $f['id'];
+					$titulo = $f['titulo'];
+					$descripcion = $f['descripcion'];
+					$precio = $f['precio'];
+
+					echo "<tr>";
+						echo "<td>".$titulo."</td>";
+						echo "<td>".$descripcion."</td>";
+						echo "<td>".$precio."</td>";
+						echo "<td>Accion</td>";
+					echo "</tr>";
+				}
+			}else{
+				echo "<p class='text-center'>Aun no tienes ninguna bebida.</p>";
+			}
+		    ?>
 		  </tbody>
 		</table>
 	</div>

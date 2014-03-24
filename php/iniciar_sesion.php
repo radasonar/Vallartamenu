@@ -29,7 +29,9 @@ if($f = mysql_fetch_array($sql)){
 			$_SESSION['usuario'] = $f['correo'];
 			$_SESSION['tipo_admin'] = $f['tipo_admin'];
 			$_SESSION['id_admin'] = $id;			
-			echo "4";
+			$tipo = $f['tipo_admin'];
+
+			echo $tipo;
 		}
 	}
 }

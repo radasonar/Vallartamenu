@@ -11,17 +11,20 @@ $('form#login').on('submit', function(e) {
 		$('#divUser').removeClass('has-error');
 		if(pass != false){
 			$('#divPass').removeClass('has-error');
-
-			$.ajax({
-				url: 'php/iniciar_sesion.php',
-				type: 'POST',
-				data: {
-					use: user,
-					pas: pass
-				}
-			}).done(function() {
-				$(location).attr('href','index.php')
-			});
+			var respuesta = '';
+			$.ajax({type: 'POST',
+					url: 'php/iniciar_sesion.php',
+					async: false,
+					data: {use: user,pas: pass},
+					success : function(text) {
+						respuesta = text;
+					}
+				});
+			if(respuesta == "2" || respuesta == "3"){
+				$(location).attr('href','index.php');
+			}else{
+				$(location).attr('href','index.php');
+			}
 		}else{
 			$('#divPass').addClass('has-error');
 		}
@@ -75,7 +78,7 @@ function altaCliente(){
 			});
 		}else{
 			$('.mensajes').html('Ingresa una contraseña.');
-			$('.altaCliente input[name=pass1]').focus();
+			$('.altaCliente input[name=pass]').focus();
 		}
 	}else{
 		$('.mensajes').html('Ingresa el nombre del usuario.');
@@ -95,35 +98,43 @@ function abrirVentana() {
 function cerrarVentana() {
 	$('.ventana').fadeOut();
 }
-/*
-function guardarPlatillo(e){
-	var titulo = $('#titulo').val();
-	var precio = $('#precio').val();
-	var descripcion = $('#descripcion').val();
+function agregarPlatillo(e) {
+	var titulo = $('form#frmPlatillo input[name=titulo]').val();
+	var precio = $('form#frmPlatillo input[name=precio]').val();
+	var descripcion = $('form#frmPlatillo textarea[name=descripcion]').val();
 
 	if(titulo != false){
+		$('#divTitulo').removeClass('has-error');
 		if(precio != false){
+			$('#divPrecio').removeClass('has-error');
 			if(descripcion != false){
+				$('#divDescripcion').removeClass('has-error');
+				var respuesta = '';
 				$.ajax({
 					type: 'POST',
-					url: 'php/insertar_platillo.php',
-					data:{
-					id: e,
-					tit: titulo,
-					pre: precio,
-					des: descripcion
+					url: 'php/cliente/insertar_platillo.php',
+					async: false,
+					data:{id_menu:e, title:titulo, price:precio, description:descripcion},
+					success: function(text) {
+						respuesta = text;
 					}
-				}).done(function() {
-						cerrarV();
 				});
+				if(respuesta == "1"){
+					cerrarVentana();
+					panelCliente(e);
+				}else{
+					$('#msjPlatillo').html("Ha ocurrido un erorr, favor de intentarlo mas tarde.");
+				}
 			}else{
-				$('#divDescripcion').addClass('has-error').focus();
+				$('#msjPlatillo').html("Ingresa una breve descripcion de tu platillo.");
+				$('#divDescripcion').addClass('has-error');
 			}
 		}else{
-			$('#divPrecio').addClass('has-error').focus();
+			$('#msjPlatillo').html("Ingresa el precio total de tu platillo.")
+			$('#divPrecio').addClass('has-error');
 		}
 	}else{
-		$('#divTitulo').addClass('has-error').focus();
+		$('#msjPlatillo').html("Ingresa el Titulo de tu Platillo.");
+		$('#divTitulo').addClass('has-error');
 	}
 }
-*/
