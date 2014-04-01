@@ -2,10 +2,10 @@
 	<h1 class="seccionTitulo">Registro de los Clientes</h1>
 	<hr>
 	<div class="table-responsive tabla">
-		<table class="table table-hover table-striped">
+		<table class="table table-hover table-striped table-bordered">
 		  <caption class="tituloTabla">Clientes</caption>
 		  <thead>
-		    <tr>
+		    <tr class="btn-primary">
 		    	<th>ID</th>
 			    <th>Nombre</th>
 			    <th>Correo</th>

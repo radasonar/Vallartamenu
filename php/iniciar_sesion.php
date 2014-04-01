@@ -31,8 +31,14 @@ if($f = mysql_fetch_array($sql)){
 			$_SESSION['id_admin'] = $id;			
 			$tipo = $f['tipo_admin'];
 
-			echo $tipo;
+			echo "1";
+		}else{
+			echo "Ha ocurrido un error, intentalo mas tarde! :(";
 		}
+	}else{
+		echo "La contraseña es Incorrecta! :/";
 	}
+}else{
+	echo "El usuario no existe! O.o";
 }
 ?>

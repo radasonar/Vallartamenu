@@ -3,10 +3,10 @@
 					! - Eventos - ¡
 
 *********************************************************/
-$('form#login').on('submit', function(e) {
+$('#login').on('submit', function(e) {
 	e.preventDefault();
-	var user = $('input[name=user]').val();
-	var pass = $('input[name=pass]').val();
+	var user = $('#login input[name=user]').val();
+	var pass = $('#login input[name=pass]').val();
 	if(user != false){
 		$('#divUser').removeClass('has-error');
 		if(pass != false){
@@ -20,16 +20,20 @@ $('form#login').on('submit', function(e) {
 						respuesta = text;
 					}
 				});
-			if(respuesta == "2" || respuesta == "3"){
+			if(respuesta == "1"){
 				$(location).attr('href','index.php');
 			}else{
-				$(location).attr('href','index.php');
+				$('#msjLogin').html(respuesta);
 			}
 		}else{
+			$('#msjLogin').html("Ingresa tu contraseña.")
 			$('#divPass').addClass('has-error');
+		$('#login input[name=pass]').focus();
 		}
 	}else{
+		$('#msjLogin').html("Ingresa tu cuenta de correo.")
 		$('#divUser').addClass('has-error');
+		$('#login input[name=user]').focus();
 	}
 });
 $('.cerrarSesion').on('click', function() {
@@ -89,14 +93,9 @@ function abrirAgregarPlatillo(e){
 	abrirVentana();
 	$('.contenidoVentana').load('php/cliente/frm_agregar_platillo.php',{ id: e});
 }
-function transicion() {
-	$('#contenido').hide().fadeIn();
-}
-function abrirVentana() {
-	$('.ventana').fadeIn();
-}
-function cerrarVentana() {
-	$('.ventana').fadeOut();
+function editarPlatillo(e,id) {
+	abrirVentana();
+	$('.contenidoVentana').load('php/cliente/cliente_contenido_editar_platillo.php',{id:e, id_platillo: id});
 }
 function agregarPlatillo(e) {
 	var titulo = $('form#frmPlatillo input[name=titulo]').val();
@@ -123,7 +122,7 @@ function agregarPlatillo(e) {
 					cerrarVentana();
 					panelCliente(e);
 				}else{
-					$('#msjPlatillo').html("Ha ocurrido un erorr, favor de intentarlo mas tarde.");
+					$('#msjPlatillo').html("Ha ocurrido un error, favor de intentarlo mas tarde.");
 				}
 			}else{
 				$('#msjPlatillo').html("Ingresa una breve descripcion de tu platillo.");
@@ -138,3 +137,128 @@ function agregarPlatillo(e) {
 		$('#divTitulo').addClass('has-error');
 	}
 }
+function guardarDetalles() {
+	/* Obligatorios */
+	var nombreLugar = $('input[name=nombreLugar]').val();
+	var direccion = $('input[name=direccion]').val();
+	var tipoLugar = "";
+					$('input[name="tipoLugar[]"]:checked').each(function() {
+						tipoLugar += $(this).val()+",";
+					});
+					tipoLugar = tipoLugar.substring(0, tipoLugar.length-1);
+
+	var descripcion = $('textarea[name=descripcion]').val();
+	var tipoCocina = "";
+					$('input[name="tipoCocina[]"]:checked').each(function() {
+						tipoCocina += $(this).val() + ",";
+					});
+					//eliminamos la última coma.
+					tipoCocina = tipoCocina.substring(0, tipoCocina.length-1);
+
+	/* No Obligatorios */
+	var nombrePropietario = $('input[name=nombrePropietario]').val();
+	var pagina = $('input[name=pagina]').val();
+
+	/* Sin revisar */
+	var zona = $('select[name=zona]').val();
+	var diaApertura = $('select[name=diaApertura]').val();
+	var diaCierre = $('select[name=diaCierre]').val();
+	var horaApertura = $('select[name=horaApertura]').val();
+	var horaCierre = $('select[name=horaCierre]').val();
+	var horario = diaApertura+" a "+diaCierre+", de "+horaApertura+" a "+horaCierre;
+
+	if(nombreLugar != false){
+	$('.nombreLugar').removeClass('has-error').removeAttr('title');
+		if(direccion != false){
+		$('.direccion').removeClass('has-error').removeAttr('title');
+			if(tipoLugar != false){
+			$('.tipoLugar').removeClass('has-error').removeAttr('title');
+				if(tipoCocina != false){
+				$('.tipoCocina').removeClass('has-error').removeAttr('title');
+					if(descripcion != false){
+					$('.descripcion').removeClass('has-error').removeAttr('title');
+						var respuesta = '';
+						$.ajax({
+							type: 'POST',
+							url: 'php/cliente/cliente_guardar_detalles.php',
+							async: false,
+							data:{nombreL:nombreLugar, nombreP:nombrePropietario, dir:direccion, zon:zona, hor:horario, pag:pagina, tipoL:tipoLugar, tipoC: tipoCocina, descrip: descripcion},
+							success: function(e) {
+								respuesta = e;
+							}
+						});
+						if(respuesta == "1"){
+							abrirVentana();
+							$('.contenidoVentana').html('Se guardo correctamente.');
+							setTimeout(cerrarVentana, 3000);
+						}else{
+							abrirVentana();
+							$('.contenidoVentana').html('Ha ocurrido un error al intentar guardar la informacion.');
+							setTimeout(cerrarVentana, 3000);
+						}
+					}else{
+						$('.descripcion').addClass('has-error').attr('title','La descripcion solo puede contener letras y numeros');
+					}
+				}else{
+					$('.tipoCocina').addClass('has-error').attr('title','Selecciona almenos 1 opcion');
+				}
+			}else{
+				$('.tipoLugar').addClass('has-error').attr('title','Selecciona almenos 1 opcion')
+			}
+		}else{
+			$('.direccion').addClass('has-error').attr('title','La direccion solo puede contener, letras, numeros y guines bajos');
+		}
+	}else{
+		$('.nombreLugar').addClass('has-error').attr('title','Ingresa el Nombre del Lugar, no puede estar vacio');
+	}
+
+	/*
+	if(nombreLugar.match(/^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ_\s]+$/)){
+	$('.nombreLugar').removeClass('has-error').removeAttr('title');
+		if(nombrePropietario == "" || nombrePropietario.match(/^[a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ\s]+$/)){
+		$('.nombrePropietario').removeClass('has-error').removeAttr('title');
+			if(direccion.match(/^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ\s]+$/)){
+			$('.direccion').removeClass('has-error').removeAttr('title');
+				if(pagina != "" || pagina.match(/^(ht|f)tps?:\/\/\w+([\.\-\w]+)?\.([a-z]{2,6})?([\.\-\w\/_]+)$/i)){
+					if(tipoCocina != ""){
+					$('.tipoCocina').removeClass('has-error').removeAttr('title');
+						if(descripcion.match(/^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ\s]+$/)){
+							var respuesta = '';
+							$.ajax({
+								type: 'POST',
+								url: 'php/cliente/cliente_guardar_detalles.php',
+								async: false,
+								data:{nombreL:nombreLugar, nombreP:nombrePropietario, dir:direccion, zon:zona, hor:horario, pag:pagina}
+							});
+						}else{
+							$('.descripcion').addClass('has-error').attr('title','La descripcion solo puede contener letras y numeros');
+						}
+					}else{
+						$('.tipoCocina').addClass('has-error').attr('title','Selecciona almenos 1 opcion');
+					}
+				}else{
+					$('.pagina').addClass('has-error').attr('title','La url no es valida');
+				}
+			}else{
+				$('.direccion').addClass('has-error').attr('title','La direccion solo puede contener, letras, numeros y guines bajos');
+			}
+		}else{
+			$('.nombrePropietario').addClass('has-error').attr('title','El nombre del Propietario solo puede llevar letras');
+		}
+	}else{
+		$('.nombreLugar').addClass('has-error').attr('title','Ingresa el Nombre del Lugar, no puede estar vacio');
+	}
+	*/
+}
+function guardarEditarPlatillo() {
+}
+function transicion() {
+	$('#contenido').hide().fadeIn();
+}
+function abrirVentana() {
+	$('.ventana').fadeIn();
+}
+function cerrarVentana() {
+	$('.ventana').fadeOut();
+	$('.contenidoVentana').html("");
+} 

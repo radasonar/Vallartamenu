@@ -10,25 +10,25 @@
 			<input class="form-control" id="imgLogo" name="imgLogo" type="file"><span class="help-inline">Tamaño del logo: 145px 145px</span>
 		</div>
 	</div>
-	<div class="form-group">
+	<div class="form-group nombreLugar">
 	    <label for="nombreLugar" class="col-sm-3 control-label">Nombre del Lugar <strong class="text-danger">*</strong></label>
 	    <div class="col-sm-4">
-	      <input class="form-control" id="nombreLugar" name="nombreLugar" placeholder="Nombre del Lugar" type="text">
+	      <input class="form-control" id="nombreLugar" name="nombreLugar" placeholder="Nombre del Lugar" type="text" required>
 	    </div>
 	</div><!-- Nombre del Lugar -->
-	<div class="form-group">
-	    <label for="propietario" class="col-sm-3 control-label">Propietario</label>
+	<div class="form-group nombrePropietario">
+	    <label for="nombrePropietario" class="col-sm-3 control-label">Propietario</label>
 	    <div class="col-sm-4">
-	      <input class="form-control" id="propietario" name="propietario" placeholder="Nombre del Propietario" type="text">
+	      <input class="form-control" id="nombrePropietario" name="nombrePropietario" placeholder="Nombre del Propietario" type="text">
 	    </div>
 	</div><!-- Propietario-->
-	<div class="form-group">
+	<div class="form-group direccion">
 	    <label for="direccion" class="col-sm-3 control-label">Dirreción <strong class="text-danger">*</strong></label>
 	    <div class="col-sm-4">
-	      <input class="form-control" id="direccion" name="direccion" placeholder="Dirreción" type="text">
+	      <input class="form-control" id="direccion" name="direccion" placeholder="Dirreción" type="text" required>
 	    </div>
 	</div><!-- Direccion-->
-	<div class="form-group">
+	<div class="form-group zona">
 	    <label for="zona" class="col-sm-3 control-label">Zona <strong class="text-danger">*</strong></label>
 	    <div class="col-sm-4">
 		    <select class="form-control" id="zona" name="zona">
@@ -112,7 +112,7 @@
 			</form><!-- form-inline2-->
 		</div>
 	</div><!-- HORARIO-->
-	<div class="form-group">
+	<div class="form-group pagina">
 	    <label for="pagina" class="col-sm-3 control-label">Pagina</label>
 	    <div class="col-sm-4">
 	      <input class="form-control" id="pagina" name="pagina" placeholder="http://..." type="text">
@@ -121,47 +121,47 @@
 	<div class="form-group">
 	    <label class="col-sm-3 control-label">Tipo de Lugar <strong class="text-danger">*</strong></label>
 	    <form class="form-inline" role="form">
-		    <div class="col-sm-4">
+		    <div class="col-sm-4 tipoLugar">
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="lugarCafe" value="Cafe" type="checkbox"> Cafe
+				  		<input name="tipoLugar[]" value="Cafe" type="checkbox"> Cafe
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="lugarRestaurante" value="Restaurante" type="checkbox"> Restaurante
+				  		<input name="tipoLugar[]" value="Restaurante" type="checkbox"> Restaurante
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="lugarBar" value="Bar" type="checkbox"> Bar
+				  		<input name="tipoLugar[]" value="Bar" type="checkbox"> Bar
 					</label>
 		    	</div>		    			    	
 			</div>
 		</form>
 	</div><!-- Tipo de Lugar -->
-	<div class="form-group">
+	<div class="form-group tipoCocina">
 	    <label class="col-sm-3 control-label">Tipo de cocina <strong class="text-danger">*</strong></label>
 	    <form class="form-inline" role="form">
 		    <div class="col-sm-5">
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaAlemana" value="Alemana" type="checkbox"> Alemana
+				  		<input name="tipoCocina[]" value="Alemana" type="checkbox"> Alemana
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaAmericana" value="Americana" type="checkbox"> Americana
+				  		<input name="tipoCocina[]" value="Americana" type="checkbox"> Americana
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaArgentina" value="Argentina" type="checkbox"> Argentina
+				  		<input name="tipoCocina[]" value="Argentina" type="checkbox"> Argentina
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaCortes" value="Cortes" type="checkbox"> Cortes
+				  		<input name="tipoCocina[]" value="Cortes" type="checkbox"> Cortes
 					</label>
 		    	</div>
 			</div>
@@ -173,22 +173,22 @@
 		    <div class="col-sm-5">
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaChina" value="China" type="checkbox"> China
+				  		<input name="tipoCocina[]" value="China" type="checkbox"> China
 					</label>
 		    	</div>		    			    	
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaEspañola" value="Español" type="checkbox"> Española
+				  		<input name="tipoCocina[]" value="Español" type="checkbox"> Española
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaFrancesa" value="Francesa" type="checkbox"> Francesa
+				  		<input name="tipoCocina[]" value="Francesa" type="checkbox"> Francesa
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaInternacional" value="Internacional" type="checkbox"> Internacional
+				  		<input name="tipoCocina[]" value="Internacional" type="checkbox"> Internacional
 					</label>
 		    	</div>
 			</div><!-- col-sm-4-->
@@ -200,22 +200,22 @@
 		    <div class="col-sm-5">
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaIndia" value="India" type="checkbox"> India
+				  		<input name="tipoCocina[]" value="India" type="checkbox"> India
 					</label>
 		    	</div>		    			    	
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaItaliana" value="Italia" type="checkbox"> Italiana
+				  		<input name="tipoCocina[]" value="Italia" type="checkbox"> Italiana
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaJaponesa" value="Japonesa" type="checkbox"> Japonesa
+				  		<input name="tipoCocina[]" value="Japonesa" type="checkbox"> Japonesa
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaMariscos" value="Mariscos" type="checkbox"> Mariscos
+				  		<input name="tipoCocina[]" value="Mariscos" type="checkbox"> Mariscos
 					</label>
 		    	</div>
 			</div><!-- col-sm-4-->
@@ -227,29 +227,29 @@
 		    <div class="col-sm-5">
 			    <div class="checkbox">
 		    		<label>
-				  		<input name="cocinaMexicana" value="Mexicana" type="checkbox"> Mexicana
+				  		<input name="tipoCocina[]" value="Mexicana" type="checkbox"> Mexicana
 					</label>
 		    	</div>		    			    	
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaPizza" value="Pizza" type="checkbox"> Pizza
+				  		<input name="tipoCocina[]" value="Pizza" type="checkbox"> Pizza
 					</label>
 		    	</div>
 		    	<div class="checkbox">
 		    		<label>
-				  		<input name="cocinaVegetariana" value="Vegetariana" type="checkbox"> Vegetariana
+				  		<input name="tipoCocina[]" value="Vegetariana" type="checkbox"> Vegetariana
 					</label>
 		    	</div>
 		    </div>
 		</form>
 	</div><!-- Tipos de Cocinas! -->
-	<div class="form-group">
+	<div class="form-group descripcion">
 		<label for="descripcion" class="col-sm-3 control-label">Descripción <strong class="text-danger">*</strong></label>
 	    <div class="col-sm-4">
-	      <textarea class="form-control" cols="30" id="descripcion" name="descripcion" rows="7"></textarea>
+	      <textarea class="form-control" cols="30" id="descripcion" name="descripcion" rows="7" required></textarea>
 	    </div>
 	</div><!-- Descripcion -->
-	<div class="form-group">
+	<div class="form-group" style="display:none;">
 		<label class="col-sm-3 control-label">Subir imagenes del lugar</label>
 		<div class="col-sm-5">
 			<div class="row"><input type="file" class="form-control"></div><br>
@@ -270,7 +270,7 @@
 	<div class="form-group">
 		<label class="col-sm-3 control-label"> </label>
 		<div class="col-sm-4">
-			<input value="Guardar cambios" class="btn btn-primary" type="buttom">
+			<input value="Guardar cambios" class="btn btn-primary" type="button" onclick="guardarDetalles()">
 		</div>
 	</div>
 </div><!-- Seccion -->

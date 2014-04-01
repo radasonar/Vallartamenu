@@ -12,6 +12,10 @@
 		<h3 class="tituloLogin">Iniciar Sesion</h3>
 		<hr>
 		<form method="post" class="form-horizontal" id="login">
+			<div class="form-group">
+				<label class="col-sm-3"></label>
+				<div class="col-sm-9 text-center" id="msjLogin"></div>
+			</div>
 			<div class="form-group" id="divUser">
 				<label class="col-sm-3">Usuario: </label>
 				<div class="col-sm-9">
