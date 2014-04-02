@@ -1,33 +1,38 @@
 <div class="seccion form-horizontal">
 	<h1 class="seccionTitulo">Detalles</h1>
 	<hr>
+	<!-- Visitas -->
 	<div class="seccionPrincipal">
 		<div class="pull-right visita-menu">Visitas a tu menu <strong>1000</strong></div>
-	</div><!-- Visitas -->
+	</div>
 	<div class="form-group">
 		<label for="imgLogo" class="col-sm-3 control-label">Cambiar Logo <strong class="text-danger">*</strong></label>
 		<div class="col-sm-5">
 			<input class="form-control" id="imgLogo" name="imgLogo" type="file"><span class="help-inline">Tamaño del logo: 145px 145px</span>
 		</div>
 	</div>
+	<!-- Nombre del Lugar -->
 	<div class="form-group nombreLugar">
 	    <label for="nombreLugar" class="col-sm-3 control-label">Nombre del Lugar <strong class="text-danger">*</strong></label>
 	    <div class="col-sm-4">
-	      <input class="form-control" id="nombreLugar" name="nombreLugar" placeholder="Nombre del Lugar" type="text" required>
+	      <input class="form-control" id="nombreLugar" name="nombreLugar" placeholder="Nombre del Lugar" type="text">
 	    </div>
-	</div><!-- Nombre del Lugar -->
+	</div>
+	<!-- Propietario-->
 	<div class="form-group nombrePropietario">
 	    <label for="nombrePropietario" class="col-sm-3 control-label">Propietario</label>
 	    <div class="col-sm-4">
 	      <input class="form-control" id="nombrePropietario" name="nombrePropietario" placeholder="Nombre del Propietario" type="text">
 	    </div>
-	</div><!-- Propietario-->
+	</div>
+	<!-- Direccion-->
 	<div class="form-group direccion">
 	    <label for="direccion" class="col-sm-3 control-label">Dirreción <strong class="text-danger">*</strong></label>
 	    <div class="col-sm-4">
-	      <input class="form-control" id="direccion" name="direccion" placeholder="Dirreción" type="text" required>
+	      <input class="form-control" id="direccion" name="direccion" placeholder="Dirreción" type="text">
 	    </div>
-	</div><!-- Direccion-->
+	</div>
+	<!-- ZONA-->
 	<div class="form-group zona">
 	    <label for="zona" class="col-sm-3 control-label">Zona <strong class="text-danger">*</strong></label>
 	    <div class="col-sm-4">
@@ -42,7 +47,8 @@
 	      		<option value="Vallarta Centro">Vallarta Centro</option>
 	        </select>
 	    </div>
-	</div><!-- ZONA-->
+	</div>
+	<!-- HORARIO-->
 	<div class="form-group">
 	    <label class="col-sm-3 control-label">Horario <strong class="text-danger">*</strong></label>
 		<div class="col-sm-4">
@@ -111,13 +117,15 @@
 				</select>
 			</form><!-- form-inline2-->
 		</div>
-	</div><!-- HORARIO-->
+	</div>
+	<!--Pagina-->
 	<div class="form-group pagina">
 	    <label for="pagina" class="col-sm-3 control-label">Pagina</label>
 	    <div class="col-sm-4">
 	      <input class="form-control" id="pagina" name="pagina" placeholder="http://..." type="text">
 	    </div>
-	</div><!--Pagina-->
+	</div>
+	<!-- Tipo de Lugar -->
 	<div class="form-group">
 	    <label class="col-sm-3 control-label">Tipo de Lugar <strong class="text-danger">*</strong></label>
 	    <form class="form-inline" role="form">
@@ -139,7 +147,8 @@
 		    	</div>		    			    	
 			</div>
 		</form>
-	</div><!-- Tipo de Lugar -->
+	</div>
+	<!-- Tipo de Cocina -->
 	<div class="form-group tipoCocina">
 	    <label class="col-sm-3 control-label">Tipo de cocina <strong class="text-danger">*</strong></label>
 	    <form class="form-inline" role="form">
@@ -168,7 +177,7 @@
 		</form>
 	</div>
 	<div class="form-group">
-	    <label for="nombreLugar" class="col-sm-3 control-label"> </label>
+	    <label class="col-sm-3 control-label"> </label>
 	    <form class="form-inline" role="form">
 		    <div class="col-sm-5">
 		    	<div class="checkbox">
@@ -195,7 +204,7 @@
 		</form>
 	</div>
 	<div class="form-group">
-	    <label for="nombreLugar" class="col-sm-3 control-label"> </label>
+	    <label class="col-sm-3 control-label"> </label>
 	    <form class="form-inline" role="form">
 		    <div class="col-sm-5">
 		    	<div class="checkbox">
@@ -222,7 +231,7 @@
 		</form>
 	</div>
 	<div class="form-group">
-	    <label for="nombreLugar" class="col-sm-3 control-label"> </label>
+	    <label class="col-sm-3 control-label"> </label>
 	    <form class="form-inline" role="form">
 		    <div class="col-sm-5">
 			    <div class="checkbox">
@@ -242,13 +251,15 @@
 		    	</div>
 		    </div>
 		</form>
-	</div><!-- Tipos de Cocinas! -->
+	</div>
+	<!-- Descripcion -->
 	<div class="form-group descripcion">
 		<label for="descripcion" class="col-sm-3 control-label">Descripción <strong class="text-danger">*</strong></label>
 	    <div class="col-sm-4">
-	      <textarea class="form-control" cols="30" id="descripcion" name="descripcion" rows="7" required></textarea>
+	      <textarea class="form-control" cols="30" id="descripcion" name="descripcion" rows="7"></textarea>
 	    </div>
-	</div><!-- Descripcion -->
+	</div>
+	<!-- Imagenes Establecimiento -->
 	<div class="form-group" style="display:none;">
 		<label class="col-sm-3 control-label">Subir imagenes del lugar</label>
 		<div class="col-sm-5">
@@ -261,12 +272,14 @@
 		</div>
 	</div>
 	<hr>
+	<!-- IMPORTANTE -->
 	<div class="form-group">
 		<label class="col-sm-3 control-label text-danger">¡IMPORTANTE!</label>
 		<div class="col-sm-5">
 			<b>Todos los campos con <strong class="text-danger">*</strong> son requeridos.</b>
 		</div>
 	</div>
+	<!-- Botones de Accion -->
 	<div class="form-group">
 		<label class="col-sm-3 control-label"> </label>
 		<div class="col-sm-4">

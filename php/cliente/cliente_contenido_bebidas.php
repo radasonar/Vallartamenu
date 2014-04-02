@@ -40,7 +40,7 @@
 						echo "<td>".$titulo."</td>";
 						echo "<td>".$descripcion."</td>";
 						echo "<td>".$precio."</td>";
-						echo "<td>Accion</td>";
+						echo '<td onclick="editarPlatillo(4,'.$id.')" class="editarPlatillo">Editar</td>';
 					echo "</tr>";
 				}
 			}else{
