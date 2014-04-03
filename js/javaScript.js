@@ -46,7 +46,7 @@ $('.cerrarSesion').on('click', function() {
 *********************************************************/
 function panelCliente(e) {
 	switch(e){
-		case 0:{ $('#contenido').load('php/cliente/cliente_contenido_detalles.php'); break;}
+		case 0:{ $('#contenido').load('php/cliente/cliente_contenido_detalles.php'); setTimeout(detalles,400); break;}
 		case 1:{ $('#contenido').load('php/cliente/cliente_contenido_entradas.php'); break;}
 		case 2:{ $('#contenido').load('php/cliente/cliente_contenido_platillos_fuertes.php'); break;}
 		case 3:{ $('#contenido').load('php/cliente/cliente_contenido_postres.php'); break;}

@@ -69,6 +69,7 @@ if($_SESSION['usuario'] != ""){
 		var accion = <?php echo $tipo; ?>;
 		switch(accion){
 			case 2:{ panelCliente(0);
+	function detalles() {
 	var nombreLugar = "<?php echo $nombreLugar; ?>";
 	var nombrePropietario = "<?php echo $nombrePropietario; ?>";
 	var direccion = "<?php echo $direccion; ?>";
@@ -78,10 +79,11 @@ if($_SESSION['usuario'] != ""){
 	var horaApertura = "<?php echo $horaApertura; ?>";
 	var horaCierre = "<?php echo $horaCierre; ?>";
 	var url = "<?php echo $url; ?>";
-	var tipoLugar = '('+"<?php echo $tipoLugar; ?>"+')';
-	var tipoCocina = '('+"<?php echo $tipoCocina; ?>"+')';
+	var x = "<?php echo $tipoLugar; ?>";
+	var tipoLugar = x.split(",");
+	var y = "<?php echo $tipoCocina; ?>";
+	var tipoCocina = y.split(",");
 	var descripcion = "<?php echo $descripcion; ?>";
-	setTimeout(function() {
 		$('input#nombreLugar').val(nombreLugar);
 		$('input#nombrePropietario').val(nombrePropietario);
 		$('input#direccion').val(direccion);
@@ -94,25 +96,14 @@ if($_SESSION['usuario'] != ""){
 		$('textarea#descripcion').val(descripcion);
 		$.each(tipoLugar, function(i) {
 			var valor = tipoLugar[i];
-			$('input[name="tipoLugar[]"][type="checkbox"][value="'+valor+'"]').attr('checked');
+			$('input[type="checkbox"][value='+valor+']').attr('checked',true);
 		});
 		$.each(tipoCocina, function(i) {
 			var valor = tipoCocina[i];
-			$('input[name="tipoCocina[]"][type=checkbox][value="'+valor+'"]').attr('checked');
+			$('input[type=checkbox][value='+valor+']').attr('checked',true);
 		});
-		console.log(nombreLugar);
-		console.log(nombrePropietario);
-		console.log(direccion);
-		console.log(zona);
-		console.log(diaApertura);
-		console.log(diaCierre);
-		console.log(horaApertura);
-		console.log(horaCierre);
-		console.log(url);
-		console.log(descripcion);
-		console.log(tipoLugar);
-		console.log(tipoCocina);
-	},400);
+	}
+	setTimeout(detalles,400);
 			break;}
 			case 3:{ break;}
 			case 4:{ panelAdmin(1); break;}
