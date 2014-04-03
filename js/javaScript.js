@@ -46,62 +46,7 @@ $('.cerrarSesion').on('click', function() {
 *********************************************************/
 function panelCliente(e) {
 	switch(e){
-		case 0:{ $('#contenido').load('php/cliente/cliente_contenido_detalles.php');
-		$(function() {
-			var respuesta = "";
-			$.ajax({
-				type: 'POST',
-				url: 'php/cliente/cliente_consultar_detalles.php',
-				async: true,
-				success: function(text) {
-					respuesta = eval(text);
-				}
-			});
-			var nombreLugar = respuesta[0].nombreLugar;
-			var nombrePropietario = respuesta.nombrePropietario;
-			var tipoLugar = "["+respuesta.tipoLugar+"]";
-			var tipoCocina = "["+respuesta.tipoCocina+"]";
-			var telefono = respuesta.telefono;
-			var url = respuesta.url;
-			var descripcion = respuesta.descripcion;
-			var direccion = respuesta.direccion;
-			var diaApertura = respuesta.diaApertura;
-			var diaCierre = respuesta.diaCierre;
-			var horaApertura = respuesta.horaApertura;
-			var horaCierre = respuesta.horaCierre;
-			var zona = respuesta.zona;
-			var ultLogin = respuesta.ultLogin;
-
-				$('input#nombreLugar').val(""+nombreLugar+"");
-				console.log(nombreLugar);
-				$('input#nombrePropietario').val(""+nombrePropietario+"");
-				console.log(nombrePropietario);
-				$('input#direccion').val(""+direccion+"");
-				console.log(direccion);
-				$('select#zona').val(""+zona+"");
-				console.log(zona);
-				$('select#diaApertura').val(""+diaApertura+"");
-				console.log(diaApertura);
-				$('select#diaCierre').val(""+diaCierre+"");
-				console.log(diaCierre);
-				$('select#horaApertura').val(""+horaApertura+"");
-				console.log(horaApertura);
-				$('select#horaCierre').val(""+horaCierre+"");
-				console.log(horaCierre);
-				$('input#pagina').val(""+url+"");
-				console.log(url);
-				$.each(tipoLugar, function() {
-					var valor = $(this);
-					$('input[name="tipoLugar[]"][type="checkbox"][value="'+valor+'"]').attr('checked');
-				});
-				$.each(tipoCocina, function() {
-					var valor = $(this);
-					$('input[name="tipoCocina[]"][type=checkbox][value="'+valor+'"]').attr('checked');
-				});
-				$('textarea#descripcion').val(""+descripcion+"");
-				console.log(descripcion);
-		});
-		break;}
+		case 0:{ $('#contenido').load('php/cliente/cliente_contenido_detalles.php'); break;}
 		case 1:{ $('#contenido').load('php/cliente/cliente_contenido_entradas.php'); break;}
 		case 2:{ $('#contenido').load('php/cliente/cliente_contenido_platillos_fuertes.php'); break;}
 		case 3:{ $('#contenido').load('php/cliente/cliente_contenido_postres.php'); break;}
@@ -238,7 +183,7 @@ function guardarDetalles() {
 							type: 'POST',
 							url: 'php/cliente/cliente_guardar_detalles.php',
 							async: false,
-							data:{nombreL:nombreLugar, nombreP:nombrePropietario, dir:direccion, zon:zona, diaA:diaApertura, diaC:diaCierre, horA:horaApertura, horaC:horaCierre, pag:pagina, tipoL:tipoLugar, tipoC: tipoCocina, descrip: descripcion},
+							data:{nombreL:nombreLugar, nombreP:nombrePropietario, dir:direccion, zon:zona, diaA:diaApertura, diaC:diaCierre, horaA:horaApertura, horaC:horaCierre, pag:pagina, tipoL:tipoLugar, tipoC: tipoCocina, descrip: descripcion},
 							success: function(e) {
 								respuesta = e;
 							}
