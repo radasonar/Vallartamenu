@@ -37,79 +37,31 @@
 		  </section>
 		</nav>
 	</header>
-	<section class="row small-12 contenedor">	
-		<!--
-			Mapa de Google
-		-->
+	<!-- <section class="row small-12 contenedor">	
+		Mapa de Google
 		<div id="map_canvas"></div>
-	</section>
-	<section class="row small-12 contenedor establecimientos">
+	</section> -->
+	<section class="row small-12 establecimientos contenedor">
 		<!--
 			Establecimientos
 		-->
 		<div class="row">
 			<article class="large-4 medium-6 small-12 columns establecimiento">
-				<figure class="logo">
+				<figure class="logo th">
 					<img src="//placehold.it/145x145" alt="">
 				</figure>
 				<p class="nombre">Nombre del Establecimiento</p>
 				<p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, vero, nisi itaque dignissimos ut facere odio molestias.</p>
 			</article>
 			<article class="large-4 medium-6 small-12 columns establecimiento">
-				<figure class="logo">
+				<figure class="logo th">
 					<img src="//placehold.it/145x145" alt="">
 				</figure>
 				<p class="nombre">Nombre del Establecimiento</p>
 				<p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, vero, nisi itaque dignissimos ut facere odio molestias.</p>
 			</article>
 			<article class="large-4 medium-6 small-12 columns establecimiento">
-				<figure class="logo">
-					<img src="//placehold.it/145x145" alt="">
-				</figure>
-				<p class="nombre">Nombre del Establecimiento</p>
-				<p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, vero, nisi itaque dignissimos ut facere odio molestias.</p>
-			</article>			
-		</div>
-		<div class="row">
-			<article class="large-4 medium-6 small-12 columns establecimiento">
-				<figure class="logo">
-					<img src="//placehold.it/145x145" alt="">
-				</figure>
-				<p class="nombre">Nombre del Establecimiento</p>
-				<p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, vero, nisi itaque dignissimos ut facere odio molestias.</p>
-			</article>
-			<article class="large-4 medium-6 small-12 columns establecimiento">
-				<figure class="logo">
-					<img src="//placehold.it/145x145" alt="">
-				</figure>
-				<p class="nombre">Nombre del Establecimiento</p>
-				<p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, vero, nisi itaque dignissimos ut facere odio molestias.</p>
-			</article>
-			<article class="large-4 medium-6 small-12 columns establecimiento">
-				<figure class="logo">
-					<img src="//placehold.it/145x145" alt="">
-				</figure>
-				<p class="nombre">Nombre del Establecimiento</p>
-				<p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, vero, nisi itaque dignissimos ut facere odio molestias.</p>
-			</article>			
-		</div>
-		<div class="row">
-			<article class="large-4 medium-6 small-12 columns establecimiento">
-				<figure class="logo">
-					<img src="//placehold.it/145x145" alt="">
-				</figure>
-				<p class="nombre">Nombre del Establecimiento</p>
-				<p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, vero, nisi itaque dignissimos ut facere odio molestias.</p>
-			</article>
-			<article class="large-4 medium-6 small-12 columns establecimiento">
-				<figure class="logo">
-					<img src="//placehold.it/145x145" alt="">
-				</figure>
-				<p class="nombre">Nombre del Establecimiento</p>
-				<p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, vero, nisi itaque dignissimos ut facere odio molestias.</p>
-			</article>
-			<article class="large-4 medium-6 small-12 columns establecimiento">
-				<figure class="logo">
+				<figure class="logo th">
 					<img src="//placehold.it/145x145" alt="">
 				</figure>
 				<p class="nombre">Nombre del Establecimiento</p>

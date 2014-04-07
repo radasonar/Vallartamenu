@@ -27,6 +27,10 @@
 				<span class="responder">
 					Responder <i class="icon-reply"></i>
 				</span>
+				<div class="form-group frm-responder">
+					<br>
+					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."></textarea>
+				</div>
 			</div>
 		</article>
 		<article>
@@ -39,6 +43,10 @@
 				<span class="responder">
 					Responder <i class="icon-reply"></i>
 				</span>
+				<div class="form-group frm-responder">
+					<br>
+					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."></textarea>
+				</div>
 			</div>
 		</article>
 		<article>
@@ -51,6 +59,10 @@
 				<span class="responder">
 					Responder <i class="icon-reply"></i>
 				</span>
+				<div class="form-group frm-responder">
+					<br>
+					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."></textarea>
+				</div>
 			</div>
 		</article>
 		<article>
@@ -63,6 +75,10 @@
 				<span class="responder">
 					Responder <i class="icon-reply"></i>
 				</span>
+				<div class="form-group frm-responder">
+					<br>
+					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."></textarea>
+				</div>
 			</div>
 		</article>
 		<article>
@@ -75,6 +91,10 @@
 				<span class="responder">
 					Responder <i class="icon-reply"></i>
 				</span>
+				<div class="form-group frm-responder">
+					<br>
+					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."></textarea>
+				</div>
 			</div>
 		</article>
 		<article>
@@ -87,6 +107,10 @@
 				<span class="responder">
 					Responder <i class="icon-reply"></i>
 				</span>
+				<div class="form-group frm-responder">
+					<br>
+					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."></textarea>
+				</div>
 			</div>
 		</article>
 		<article>
@@ -99,6 +123,10 @@
 				<span class="responder">
 					Responder <i class="icon-reply"></i>
 				</span>
+				<div class="frm-responder form-group">
+					<br>
+					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."></textarea>
+				</div>
 			</div>
 		</article>
 		<article>
@@ -111,6 +139,10 @@
 				<span class="responder">
 					Responder <i class="icon-reply"></i>
 				</span>
+				<div class="form-group frm-responder">
+					<br>
+					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."></textarea>
+				</div>
 			</div>
 		</article>
 	</section>

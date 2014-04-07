@@ -44,6 +44,9 @@ $('.panel .item-menu').click(
 		$('.panel div').removeClass('btnActivo');
 		$(this).addClass('btnActivo');
 	});
+/*
+	Menus
+*/
 $('.contenidoDesplegable').hide();
 $('.desplegable').click(function() {
 	$('.contenidoDesplegable').slideToggle('fast');
@@ -52,6 +55,9 @@ $('.contenidoDesplegable .item-submenu').click(function() {
 	$('.contenidoDesplegable div').removeClass('btnActivoSub');
 	$(this).addClass('btnActivoSub');
 });
+/*
+	Responder comentarios
+*/
 /*********************************************************
 
 					! - Funciones - ¡
@@ -64,7 +70,7 @@ function panelCliente(e) {
 		case 2:{ $('#contenido').load('php/cliente/cliente_contenido_platillos_fuertes.php'); break;}
 		case 3:{ $('#contenido').load('php/cliente/cliente_contenido_postres.php'); break;}
 		case 4:{ $('#contenido').load('php/cliente/cliente_contenido_bebidas.php'); break;}
-		case 5:{ $('#contenido').load('php/cliente/cliente_contenido_comentarios.php'); break;}
+		case 5:{ $('#contenido').load('php/cliente/cliente_contenido_comentarios.php'); setTimeout(responder,400); break;}
 	}
 	transicion();
 }
@@ -204,12 +210,12 @@ function guardarDetalles() {
 						});
 						if(respuesta == "1"){
 							abrirVentana();
-							$('.contenidoVentana').html('Se guardo correctamente.');
-							setTimeout(cerrarVentana, 3000);
+							$('.contenidoVentana').html('<center>Se guardo correctamente.</center>');
+							setTimeout('location.reload()', 2700);
 						}else{
 							abrirVentana();
-							$('.contenidoVentana').html('Ha ocurrido un error al intentar guardar la informacion.');
-							setTimeout(cerrarVentana, 3000);
+							$('.contenidoVentana').html('<center>Ha ocurrido un error al intentar guardar la informacion.</center>');
+							setTimeout(cerrarVentana, 2700);
 						}
 					}else{
 						$('.descripcion').addClass('has-error').attr('title','La descripcion solo puede contener letras y numeros');
@@ -226,6 +232,13 @@ function guardarDetalles() {
 	}else{
 		$('.nombreLugar').addClass('has-error').attr('title','Ingresa el Nombre del Lugar, no puede estar vacio');
 	}
+}
+function responder() {
+	$('.responder').each(function() {
+		$(this).click(function() {
+			$(this).siblings('.frm-responder').slideToggle('fast');
+		});
+	});
 }
 function transicion() {
 	$('#contenido').hide().fadeIn('fast');
