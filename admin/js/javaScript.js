@@ -39,6 +39,19 @@ $('#login').on('submit', function(e) {
 $('.cerrarSesion').on('click', function() {
 	$(location).attr('href','php/cerrar_sesion.php');
 });
+$('.panel .item-menu').click(
+	function() {
+		$('.panel div').removeClass('btnActivo');
+		$(this).addClass('btnActivo');
+	});
+$('.contenidoDesplegable').hide();
+$('.desplegable').click(function() {
+	$('.contenidoDesplegable').slideToggle('fast');
+});
+$('.contenidoDesplegable .item-submenu').click(function() {
+	$('.contenidoDesplegable div').removeClass('btnActivoSub');
+	$(this).addClass('btnActivoSub');
+});
 /*********************************************************
 
 					! - Funciones - ¡
@@ -51,6 +64,7 @@ function panelCliente(e) {
 		case 2:{ $('#contenido').load('php/cliente/cliente_contenido_platillos_fuertes.php'); break;}
 		case 3:{ $('#contenido').load('php/cliente/cliente_contenido_postres.php'); break;}
 		case 4:{ $('#contenido').load('php/cliente/cliente_contenido_bebidas.php'); break;}
+		case 5:{ $('#contenido').load('php/cliente/cliente_contenido_comentarios.php'); break;}
 	}
 	transicion();
 }
@@ -212,52 +226,14 @@ function guardarDetalles() {
 	}else{
 		$('.nombreLugar').addClass('has-error').attr('title','Ingresa el Nombre del Lugar, no puede estar vacio');
 	}
-
-	/*
-	if(nombreLugar.match(/^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ_\s]+$/)){
-	$('.nombreLugar').removeClass('has-error').removeAttr('title');
-		if(nombrePropietario == "" || nombrePropietario.match(/^[a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ\s]+$/)){
-		$('.nombrePropietario').removeClass('has-error').removeAttr('title');
-			if(direccion.match(/^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ\s]+$/)){
-			$('.direccion').removeClass('has-error').removeAttr('title');
-				if(pagina != "" || pagina.match(/^(ht|f)tps?:\/\/\w+([\.\-\w]+)?\.([a-z]{2,6})?([\.\-\w\/_]+)$/i)){
-					if(tipoCocina != ""){
-					$('.tipoCocina').removeClass('has-error').removeAttr('title');
-						if(descripcion.match(/^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ\s]+$/)){
-							var respuesta = '';
-							$.ajax({
-								type: 'POST',
-								url: 'php/cliente/cliente_guardar_detalles.php',
-								async: false,
-								data:{nombreL:nombreLugar, nombreP:nombrePropietario, dir:direccion, zon:zona, hor:horario, pag:pagina}
-							});
-						}else{
-							$('.descripcion').addClass('has-error').attr('title','La descripcion solo puede contener letras y numeros');
-						}
-					}else{
-						$('.tipoCocina').addClass('has-error').attr('title','Selecciona almenos 1 opcion');
-					}
-				}else{
-					$('.pagina').addClass('has-error').attr('title','La url no es valida');
-				}
-			}else{
-				$('.direccion').addClass('has-error').attr('title','La direccion solo puede contener, letras, numeros y guines bajos');
-			}
-		}else{
-			$('.nombrePropietario').addClass('has-error').attr('title','El nombre del Propietario solo puede llevar letras');
-		}
-	}else{
-		$('.nombreLugar').addClass('has-error').attr('title','Ingresa el Nombre del Lugar, no puede estar vacio');
-	}
-	*/
 }
 function transicion() {
-	$('#contenido').hide().fadeIn();
+	$('#contenido').hide().fadeIn('fast');
 }
 function abrirVentana() {
-	$('.ventana').fadeIn();
+	$('.ventana').fadeIn('fast');
 }
 function cerrarVentana() {
-	$('.ventana').fadeOut();
-	$('.contenidoVentana').delay(1000).html("");
-} 
+	$('.ventana').fadeOut('fast');
+	$('.contenidoVentana').html("");
+}

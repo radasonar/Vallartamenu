@@ -5,7 +5,7 @@
 	</div><!-- Visitas -->
 	<form method="post" class="form-horizontal altaCliente">
 		<div class="form-group">
-			<label for="" class="control-label col-sm-3">Mensaje:</label>
+			<label for="" class="control-label col-sm-3"></label>
 			<div class="col-sm-4 mensajes"></div>
 		</div>
 		<div class="form-group">
