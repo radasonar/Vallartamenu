@@ -5,10 +5,10 @@
 	<div class="seccionPrincipal">
 		<div class="pull-right visita-menu">Visitas a tu menu <strong>1000</strong></div>
 	</div>
-	<div class="form-group" style="display: none;">
-		<label for="imgLogo" class="col-sm-3 control-label">Cambiar Logo <strong class="text-danger">*</strong></label>
-		<div class="col-sm-5">
-			<input class="form-control" id="imgLogo" name="imgLogo" type="file"><span class="help-inline">Tamaño del logo: 145px 145px</span>
+	<div class="form-group">
+		<label for="imgLogo" class="col-sm-3 control-label"></label>
+		<div class="col-sm-4">
+			<a href="#" class="btn btn-primary col-sm-12">Subir Imagenes</a>
 		</div>
 	</div>
 	<!-- Nombre del Lugar -->
