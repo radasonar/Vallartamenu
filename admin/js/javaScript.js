@@ -28,7 +28,7 @@ $('#login').on('submit', function(e) {
 		}else{
 			$('#msjLogin').html("Ingresa tu contraseña.")
 			$('#divPass').addClass('has-error');
-		$('#login input[name=pass]').focus();
+			$('#login input[name=pass]').focus();
 		}
 	}else{
 		$('#msjLogin').html("Ingresa tu cuenta de correo.")
@@ -237,6 +237,39 @@ function responder() {
 	$('.responder').each(function() {
 		$(this).click(function() {
 			$(this).siblings('.frm-responder').slideToggle('fast');
+			setTimeout(function() {
+				$('.frm-responder input[type=button]').click(function() {
+					var respuesta = $(this).prev().val();
+					var idCom = $(this).next().val();
+					if(respuesta != false) {
+						$.ajax({
+							url:'php/cliente/cliente_agregar_respuesta.php',
+							type: 'POST',
+							async: false,
+							data: {respu: respuesta, idcom: idCom},
+							success: function(data) {
+								if(data == "1"){
+									abrirVentana();
+									$('.contenidoVentana').html('<center>Se envio correctamente la respuesta.</center>');
+									setTimeout(function() {
+										cerrarVentana();
+										panelCliente(5);
+									},2700);
+								}else{
+									abrirVentana();
+									$('.contenidoVentana').html('<center>No se pudo enviar la respuesta.</center>');
+									setTimeout(function() {
+										cerrarVentana();
+										$(this).parent().slideUp('fast');
+									},2700);
+								}
+							}
+						});
+					}else{
+						$(this).parent().slideUp('fast');
+					}
+				});
+			}, 400);
 		});
 	});
 }
