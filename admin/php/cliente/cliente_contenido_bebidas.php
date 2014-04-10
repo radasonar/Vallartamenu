@@ -2,7 +2,9 @@
 	<h1 class="seccionTitulo">Bebidas</h1>
 	<hr>
 	<div class="seccionPrincipal">
-		<figure class="agregar" onclick="abrirAgregarPlatillo(4)"></figure>
+		<figure class="agregar" onclick="abrirAgregarPlatillo(4)" title="Agregar platillo">
+			<i class="icon-plus"></i>
+		</figure>
 	</div>
 	<div class="table-responsive tabla">
 		<table class="table table-hover table-striped table-bordered">
@@ -17,9 +19,9 @@
 		  </thead>
 		  <tbody>
 		    <?php 
-			define("HOST","vallartame.ipagemysql.com");
-			define("USER","menu_root");
-			define("PASS","pr0methe0");
+			define("HOST","127.0.0.1");
+			define("USER","root");
+			define("PASS","");
 			define("DB","vallartamenu");
 
 			mysql_connect(HOST,USER,PASS);

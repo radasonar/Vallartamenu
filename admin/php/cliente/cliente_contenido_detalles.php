@@ -5,18 +5,12 @@
 	<div class="seccionPrincipal">
 		<div class="pull-right visita-menu">Visitas a tu menu <strong>1000</strong></div>
 	</div>
+	<!-- Boton Subir Imagenes -->
 	<div class="form-group">
 		<label for="imgLogo" class="col-sm-3 control-label"></label>
 		<div class="col-sm-4">
-			<a href="#" class="btn btn-primary col-sm-12">Subir Imagenes</a>
+			<a href="imagenes.php" class="btn btn-primary col-sm-12">Subir Imagenes</a>
 		</div>
-	</div>
-	<!-- Nombre del Lugar -->
-	<div class="form-group nombreLugar">
-	    <label for="nombreLugar" class="col-sm-3 control-label">Nombre del Lugar <strong class="text-danger">*</strong></label>
-	    <div class="col-sm-4">
-	      <input class="form-control" id="nombreLugar" name="nombreLugar" placeholder="Nombre del Lugar" type="text">
-	    </div>
 	</div>
 	<!-- Propietario-->
 	<div class="form-group nombrePropietario">
@@ -27,9 +21,16 @@
 	</div>
 	<!-- Direccion-->
 	<div class="form-group direccion">
-	    <label for="direccion" class="col-sm-3 control-label">Dirreción <strong class="text-danger">*</strong></label>
+	    <label for="direccion" class="col-sm-3 control-label">Dirreción<strong class="text-danger">*</strong></label>
 	    <div class="col-sm-4">
 	      <input class="form-control" id="direccion" name="direccion" placeholder="Dirreción" type="text">
+	    </div>
+	</div>
+	<!-- Nombre del Lugar -->
+	<div class="form-group telefono">
+	    <label for="telefono" class="col-sm-3 control-label">Telefono<strong class="text-danger">*</strong></label>
+	    <div class="col-sm-4">
+	      <input class="form-control" id="telefono" name="telefono" placeholder="Ej: 322-123-45-67" type="text">
 	    </div>
 	</div>
 	<!-- ZONA-->

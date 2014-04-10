@@ -70,7 +70,7 @@ function panelCliente(e) {
 		case 2:{ $('#contenido').load('php/cliente/cliente_contenido_platillos_fuertes.php'); break;}
 		case 3:{ $('#contenido').load('php/cliente/cliente_contenido_postres.php'); break;}
 		case 4:{ $('#contenido').load('php/cliente/cliente_contenido_bebidas.php'); break;}
-		case 5:{ $('#contenido').load('php/cliente/cliente_contenido_comentarios.php'); setTimeout(responder,400); break;}
+		case 5:{ $('#contenido').load('php/cliente/cliente_contenido_comentarios.php'); setTimeout(accionesComentarios,400); break;}
 	}
 	transicion();
 }
@@ -117,7 +117,47 @@ function editarPlatillo(e,id) {
 	abrirVentana();
 	$('.contenidoVentana').load('php/cliente/cliente_contenido_editar_platillo.php',{id:e, id_platillo: id});
 }
-function guardarEditarPlatillo() {
+function guardarEditarPlatillo(id,idP) {
+	var titulo = $('input[name="titulo"]').val();
+	var precio = $('input[name="precio"]').val();
+	var descripcion = $('textarea[name="descripcion"]').val();
+
+	if(titulo != ""){
+		$('.divTitulo').removeClass('has-error');
+		if(precio != ""){
+			$('.divPrecio').removeClass('has-error');
+			if(descripcion != ""){
+				$('.divDescripcion').removeClass('has-error');
+				$.ajax({
+					url: 'php/cliente/cliente_guardar_editar_platillo.php',
+					type: 'POST',
+					async: false,
+					data: {i:id, idp:idP, tit:titulo, pre:precio, desc:descripcion},
+					success: function(e) {
+						if(e == "1"){
+							$('.contenidoVentana').html('<center>Se guardo correctamente el platillo.</center>');
+							setTimeout(function() {
+								cerrarVentana();
+								panelCliente(id);
+							},2000);
+						}else{
+							$('.contenidoVentana').html('<center>No se pudo guardar el platillo.</center>');
+							setTimeout(cerrarVentana,2000);
+						}
+					}
+				});
+			}else{
+				$('.msjPlatillo').html('Ningun campo puede estar vacio.');
+				$('.divDescripcion').addClass('has-error');
+			}
+		}else{
+			$('.msjPlatillo').html('Ningun campo puede estar vacio.');
+			$('.divPrecio').addClass('has-error');
+		}
+	}else{
+		$('.msjPlatillo').html('Ningun campo puede estar vacio.');
+		$('.divTitulo').addClass('has-error');
+	}
 }
 function agregarPlatillo(e) {
 	var titulo = $('form#frmPlatillo input[name=titulo]').val();
@@ -161,8 +201,8 @@ function agregarPlatillo(e) {
 }
 function guardarDetalles() {
 	/* Obligatorios */
-	var nombreLugar = $('input[name=nombreLugar]').val();
 	var direccion = $('input[name=direccion]').val();
+	var telefono = $('input[name=telefono]').val();
 	var tipoLugar = "";
 					$('input[name="tipoLugar[]"]:checked').each(function() {
 						tipoLugar += $(this).val()+",";
@@ -188,8 +228,8 @@ function guardarDetalles() {
 	var horaApertura = $('select[name=horaApertura]').val();
 	var horaCierre = $('select[name=horaCierre]').val();
 
-	if(nombreLugar != false){
-	$('.nombreLugar').removeClass('has-error').removeAttr('title');
+	if(telefono != false){
+	$('.telefono').removeClass('has-error').removeAttr('title');
 		if(direccion != false){
 		$('.direccion').removeClass('has-error').removeAttr('title');
 			if(tipoLugar != false){
@@ -203,7 +243,7 @@ function guardarDetalles() {
 							type: 'POST',
 							url: 'php/cliente/cliente_guardar_detalles.php',
 							async: false,
-							data:{nombreL:nombreLugar, nombreP:nombrePropietario, dir:direccion, zon:zona, diaA:diaApertura, diaC:diaCierre, horaA:horaApertura, horaC:horaCierre, pag:pagina, tipoL:tipoLugar, tipoC: tipoCocina, descrip: descripcion},
+							data:{telef:telefono, nombreP:nombrePropietario, dir:direccion, zon:zona, diaA:diaApertura, diaC:diaCierre, horaA:horaApertura, horaC:horaCierre, pag:pagina, tipoL:tipoLugar, tipoC: tipoCocina, descrip: descripcion},
 							success: function(e) {
 								respuesta = e;
 							}
@@ -211,11 +251,11 @@ function guardarDetalles() {
 						if(respuesta == "1"){
 							abrirVentana();
 							$('.contenidoVentana').html('<center>Se guardo correctamente.</center>');
-							setTimeout('location.reload()', 2700);
+							setTimeout('location.reload()', 2000);
 						}else{
 							abrirVentana();
 							$('.contenidoVentana').html('<center>Ha ocurrido un error al intentar guardar la informacion.</center>');
-							setTimeout(cerrarVentana, 2700);
+							setTimeout(cerrarVentana, 2000);
 						}
 					}else{
 						$('.descripcion').addClass('has-error').attr('title','La descripcion solo puede contener letras y numeros');
@@ -230,38 +270,38 @@ function guardarDetalles() {
 			$('.direccion').addClass('has-error').attr('title','La direccion solo puede contener, letras, numeros y guines bajos');
 		}
 	}else{
-		$('.nombreLugar').addClass('has-error').attr('title','Ingresa el Nombre del Lugar, no puede estar vacio');
+		$('.telefono').addClass('has-error').attr('title','Ingresa el Nombre del Lugar, no puede estar vacio');
 	}
 }
-function responder() {
+function accionesComentarios() {
 	$('.responder').each(function() {
 		$(this).click(function() {
 			$(this).siblings('.frm-responder').slideToggle('fast');
 			setTimeout(function() {
 				$('.frm-responder input[type=button]').click(function() {
 					var respuesta = $(this).prev().val();
-					var idCom = $(this).next().val();
+					var idCom = $(this).parent().siblings('input[type="hidden"]').val();
 					if(respuesta != false) {
 						$.ajax({
 							url:'php/cliente/cliente_agregar_respuesta.php',
 							type: 'POST',
 							async: false,
 							data: {respu: respuesta, idcom: idCom},
-							success: function(data) {
-								if(data == "1"){
+							success: function(e) {
+								if(e == "1"){
 									abrirVentana();
 									$('.contenidoVentana').html('<center>Se envio correctamente la respuesta.</center>');
 									setTimeout(function() {
 										cerrarVentana();
 										panelCliente(5);
-									},2700);
+									},2000);
 								}else{
 									abrirVentana();
 									$('.contenidoVentana').html('<center>No se pudo enviar la respuesta.</center>');
 									setTimeout(function() {
 										cerrarVentana();
 										$(this).parent().slideUp('fast');
-									},2700);
+									},2000);
 								}
 							}
 						});
@@ -270,6 +310,72 @@ function responder() {
 					}
 				});
 			}, 400);
+		});
+	});
+	$('.editar').each(function() {
+		$(this).click(function() {
+			$(this).siblings('.frm-responder').slideToggle('fast');
+			setTimeout(function() {
+				$('.frm-responder input[type=button]').click(function() {
+					var respuesta = $(this).prev().val();
+					var idCom = $(this).parent().siblings('input[type="hidden"]').val();
+					if(respuesta != false) {
+						$.ajax({
+							url:'php/cliente/cliente_agregar_respuesta.php',
+							type: 'POST',
+							async: false,
+							data: {respu: respuesta, idcom: idCom},
+							success: function(e) {
+								if(e == "1"){
+									abrirVentana();
+									$('.contenidoVentana').html('<center>Se envio correctamente la respuesta.</center>');
+									setTimeout(function() {
+										cerrarVentana();
+										panelCliente(5);
+									},2000);
+								}else{
+									abrirVentana();
+									$('.contenidoVentana').html('<center>No se pudo enviar la respuesta.</center>');
+									setTimeout(function() {
+										cerrarVentana();
+										$(this).parent().slideUp('fast');
+									},2000);
+								}
+							}
+						});
+					}else{
+						$(this).parent().slideUp('fast');
+					}
+				});
+			}, 400);
+		});
+	});
+	$('.borrar').each(function() {
+		$(this).click(function() {
+			var idCom = $(this).siblings('input[type="hidden"]').val();
+			$.ajax({
+				url: 'php/cliente/cliente_eliminar_comentario.php',
+				type: 'POST',
+				async: false,
+				data: {id:idCom},
+				success: function(e) {
+					if(e == "1"){
+						abrirVentana();
+						$('.contenidoVentana').html('<center>Se Elimino correctamente el comentario.</center>');
+						setTimeout(function() {
+							cerrarVentana();
+							panelCliente(5);
+						},2000);
+					}else{
+						abrirVentana();
+						$('.contenidoVentana').html('<center>No se pudo eliminar el comentario.</center>');
+						setTimeout(function() {
+							cerrarVentana();
+							$(this).parent().slideUp('fast');
+						},2000);
+					}
+				}
+			});
 		});
 	});
 }

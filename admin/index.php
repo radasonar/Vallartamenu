@@ -2,9 +2,9 @@
 session_start();
 if($_SESSION['usuario'] != ""){
 	$tipo = $_SESSION['tipo_admin'];
-	define("HOST","vallartame.ipagemysql.com");
-	define("USER","menu_root");
-	define("PASS","pr0methe0");
+	define("HOST","127.0.0.1");
+	define("USER","root");
+	define("PASS","");
 	define("DB","vallartamenu");
 
 	mysql_connect(HOST,USER,PASS);
@@ -18,6 +18,7 @@ if($_SESSION['usuario'] != ""){
 	$nombreLugar = $f['nombre_lugar'];
 	$nombrePropietario = $f['nombre_encargado'];
 	$direccion = $f['direccion'];
+	$telefono = $f['telefono'];
 	$zona = $f['zona'];
 	$diaApertura = $f['diaApertura'];
 	$diaCierre = $f['diaCierre'];
@@ -33,29 +34,27 @@ if($_SESSION['usuario'] != ""){
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<title>Backend Vallarta.Me</title>
+	<title>Backend Vallarta.Menu</title>
 	<link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 	<div class="ventana"><div class="contenidoVentana"></div></div>
 	<section class="contedor">
-		<div class="row">
-			<div class="col-xs-3 ">
-				<nav>
-					<div class="row panel">
-						<?php 
-							switch($tipo){
-								case 2:{ require_once("php/cliente/cliente_menu.php"); break; }
-								case 4:{ require_once("php/admin/admin_menu.php"); break; }
-							}
-						?>
-					</div>					
-				</nav>
-			</div>
-			<div class="col-xs-9 nopadding">
-				<div id="contenido" class="row"></div>
-			</div>
-		</div><!-- row -->
+		<div class="col-xs-3 ">
+			<nav>
+				<div class="row panel">
+					<?php 
+						switch($tipo){
+							case 2:{ require_once("php/cliente/cliente_menu.php"); break; }
+							case 4:{ require_once("php/admin/admin_menu.php"); break; }
+						}
+					?>
+				</div>					
+			</nav>
+		</div>
+		<div class="col-xs-9 nopadding">
+			<div id="contenido" class="row"></div>
+		</div>
 	</section><!-- Container -->
 	<script src="js/jquery-2.1.0.min.js"></script>
 	<script src="js/javaScript.js"></script>
@@ -64,9 +63,9 @@ if($_SESSION['usuario'] != ""){
 		switch(accion){
 			case 2:{ panelCliente(0);
 	function detalles() {
-	var nombreLugar = "<?php echo $nombreLugar; ?>";
 	var nombrePropietario = "<?php echo $nombrePropietario; ?>";
 	var direccion = "<?php echo $direccion; ?>";
+	var telefono = "<?php echo $telefono; ?>";
 	var zona = "<?php echo $zona; ?>";
 	var diaApertura = "<?php echo $diaApertura; ?>";
 	var diaCierre = "<?php echo $diaCierre; ?>";
@@ -78,9 +77,9 @@ if($_SESSION['usuario'] != ""){
 	var y = "<?php echo $tipoCocina; ?>";
 	var tipoCocina = y.split(",");
 	var descripcion = "<?php echo $descripcion; ?>";
-		$('input#nombreLugar').val(nombreLugar);
 		$('input#nombrePropietario').val(nombrePropietario);
 		$('input#direccion').val(direccion);
+		$('input#telefono').val(telefono);
 		$('select#zona').val(zona);
 		$('select#diaApertura').val(diaApertura);
 		$('select#diaCierre').val(diaCierre);

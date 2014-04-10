@@ -1,7 +1,25 @@
-@import 'nib'
 @import '../css/bootstrap.css'
-@import 'icomoon.styl'
-@import 'fuentesgoogle.styl'
+@import '../css/icomoon.css'
+@import 'nib'
+
+@font-face
+	font-family 'Source Sans Pro'
+	font-style normal
+	font-weight 200
+	src local('Source Sans Pro ExtraLight'), local('SourceSansPro-ExtraLight'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGMa9awK0IKUjIWABZIchFI8.woff) format('woff')
+
+@font-face
+	font-family 'Source Sans Pro'
+	font-style normal
+	font-weight 300
+	src local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGNbE_oMaV8t2eFeISPpzbdE.woff) format('woff')
+
+@font-face
+	font-family 'Source Sans Pro'
+	font-style normal
+	font-weight 400
+	src local('Source Sans Pro'), local('SourceSansPro-Regular'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v7/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff')
+
 
 @font-face
 	font-family "qlassik"
@@ -21,7 +39,6 @@ rojo = #d83c3c
 verde = rgb(152,211,127)
 
 body
-	background #dedede
 	overflow-x hidden
 
 footer
@@ -42,8 +59,21 @@ h6
 	font-family 'Source Sans Pro'
 	font-weight 44 !important
 
+.cabecera
+	height 75px
+	background naranja
+	color #fff
+
+	.regresar
+		line-height 75px
+		position relative
+		left 2em
+		font-size 1.4em
+		&:link
+		&:visited
+			color #fff
+
 .contedor
-	background #FFF
 	z-index 1
 
 #contenido
@@ -60,13 +90,13 @@ h6
 
 	.seccionTitulo
 		color naranja
+		text-align center
 
 	.seccionPrincipal
 		overflow hidden
 		padding-bottom 2em
 
 		.agregar
-			background gris
 			border-radius 0.3em
 			cursor pointer
 			float right
@@ -74,6 +104,13 @@ h6
 			position relative
 			right 2em
 			width 100px
+			border 1px solid rgba(0,0,0,0.1)
+			text-align center
+
+			i
+				line-height 100px
+				font-size 4.5em
+				color naranja
 
 		.visita-menu
 			position relative
@@ -89,6 +126,9 @@ h6
 
 		.editarPlatillo
 			cursor pointer
+
+.subcontenido
+	box-shadow 1px 1px 6px rgba(0,0,0,0.2)
 
 .panel
 	border-radius 0.5em 0 0.5em 0
@@ -252,6 +292,12 @@ h6
 					cursor pointer
 
 			.responder
+				color azul_telegram
+				float right
+				&:hover
+					cursor pointer
+
+			.editar
 				color azul_telegram
 				float right
 				&:hover

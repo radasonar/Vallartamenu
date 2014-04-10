@@ -15,9 +15,9 @@
 		  </thead>
 		  <tbody>
 		    <?php
-				define("HOST","vallartame.ipagemysql.com");
-				define("USER","menu_root");
-				define("PASS","pr0methe0");
+				define("HOST","127.0.0.1");
+				define("USER","root");
+				define("PASS","");
 				define("DB","vallartamenu");
 
 				@mysql_connect(HOST,USER,PASS);

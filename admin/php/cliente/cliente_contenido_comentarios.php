@@ -1,7 +1,7 @@
 <?php
-define("HOST","vallartame.ipagemysql.com");
-define("USER","menu_root");
-define("PASS","pr0methe0");
+define("HOST","127.0.0.1");
+define("USER","root");
+define("PASS","");
 define("DB","vallartamenu");
 
 mysql_connect(HOST,USER,PASS);
@@ -47,13 +47,19 @@ $id_admin = $_SESSION['id_admin'];
 				<span class="borrar">
 					<i class="icon-remove"></i> Eliminar
 				</span>
-				<?php if($respuesta == ""){ ?><span class="responder">
+				<?php if($respuesta == ""){ ?>
+				<span class="responder">
 					Responder <i class="icon-reply"></i>
-				</span><?php } ?>
+				</span>
+				<?php }else{ ?>
+				<span class="editar">
+					Editar <i class="icon-pencil"></i>
+				</span>
+				<?php } ?>
+				<input type="hidden" value="<?php echo $idComentario; ?>">
 				<div class="form-group frm-responder">
-					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."></textarea>
+					<textarea name="" rows="5" class="form-control" placeholder="Ingresa tu respuesta..."><?php echo $respuesta; ?></textarea>
 					<input type="button" class="btn btn-primary pull-right" value="Enviar">
-					<input type="hidden" value="<?php echo $idComentario; ?>">
 				</div>
 			</div>
 		</article>
